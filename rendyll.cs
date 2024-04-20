@@ -42,9 +42,9 @@ namespace Cabardo
 
                 _c.SaveChanges();
 
-                textBox1.Text = "";
-                textBox2.Text = "";
-                textBox3.Text = "";
+                textBox1.Text = " ";
+                textBox2.Text = " ";
+                textBox3.Text = " ";
 
 
 
