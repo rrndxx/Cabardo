@@ -46,12 +46,18 @@ namespace Cabardo
                 textBox2.Text = " ";
                 textBox3.Text = " ";
 
-
-
-
                 _bSource.DataSource = _c.CLIENTs.ToList();
                 this.Close();
             }
+        }
+
+        private void Edit_Load(object sender, EventArgs e)
+        {
+            var client = _c.CLIENTs.Where(q => q.Id == _id).FirstOrDefault();
+            textBox1.Text = client.Firstname;
+            textBox2.Text = client.Lastname;
+            textBox3.Text = client.Residency;
+            dateTimePicker1.Value = client.Birthday;
         }
     }
 }

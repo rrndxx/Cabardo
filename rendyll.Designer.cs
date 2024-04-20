@@ -133,6 +133,7 @@ namespace Cabardo
             this.Controls.Add(this.textBox1);
             this.Name = "Edit";
             this.Text = "Edit";
+            this.Load += new System.EventHandler(this.Edit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
