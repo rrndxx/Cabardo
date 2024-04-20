@@ -46,6 +46,9 @@ namespace Cabardo
                 textBox2.Text = "";
                 textBox3.Text = "";
 
+
+
+
                 _bSource.DataSource = _c.CLIENTs.ToList();
                 this.Close();
             }
