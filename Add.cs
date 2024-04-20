@@ -35,6 +35,10 @@ namespace Cabardo
             {
 
 
+
+
+
+
                 CLIENT c = new CLIENT();
                 c.Firstname = textBox1.Text.Trim();
                 c.Lastname = textBox2.Text.Trim();
