@@ -25,7 +25,6 @@ namespace Cabardo
             _bSource = bSource;
             _id = id;
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBox1.Text.Trim()) || string.IsNullOrEmpty(textBox2.Text.Trim()) || string.IsNullOrEmpty(textBox3.Text.Trim()))
@@ -50,7 +49,6 @@ namespace Cabardo
                 this.Close();
             }
         }
-
         private void Edit_Load(object sender, EventArgs e)
         {
             var client = _c.CLIENTs.Where(q => q.Id == _id).FirstOrDefault();

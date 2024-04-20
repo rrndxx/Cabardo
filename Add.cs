@@ -15,7 +15,6 @@ namespace Cabardo
     {
         private readonly ambotEntities1 _c = new ambotEntities1();
         private readonly BindingSource _bSource;
-
         public Add()
         {
             InitializeComponent();
@@ -24,7 +23,6 @@ namespace Cabardo
         {
             _bSource = bSource;
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBox1.Text.Trim()) || string.IsNullOrEmpty(textBox2.Text.Trim()) || string.IsNullOrEmpty(textBox3.Text.Trim()))
@@ -33,12 +31,6 @@ namespace Cabardo
             }
             else
             {
-
-
-
-
-
-
                 CLIENT c = new CLIENT();
                 c.Firstname = textBox1.Text.Trim();
                 c.Lastname = textBox2.Text.Trim();
