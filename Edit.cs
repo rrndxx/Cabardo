@@ -34,6 +34,11 @@ namespace Cabardo
             c.Residency = textBox3.Text.Trim();
             c.Birthday = dateTimePicker1.Value;
 
+
+
+
+
+
             _c.SaveChanges();
 
             textBox1.Text = "";
