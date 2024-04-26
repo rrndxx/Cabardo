@@ -13,10 +13,10 @@ namespace Cabardo.Entities
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ambotEntities1 : DbContext
+    public partial class ambotEntities2 : DbContext
     {
-        public ambotEntities1()
-            : base("name=ambotEntities1")
+        public ambotEntities2()
+            : base("name=ambotEntities2")
         {
         }
     
@@ -26,5 +26,6 @@ namespace Cabardo.Entities
         }
     
         public virtual DbSet<CLIENT> CLIENTs { get; set; }
+        public virtual DbSet<LOAN> LOANs { get; set; }
     }
 }

@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Cabardo
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        private ambotEntities1 _c = new ambotEntities1();
+        private ambotEntities2 _c = new ambotEntities2();
         private int id;
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
@@ -56,6 +56,12 @@ namespace Cabardo
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             cLIENTBindingSource.DataSource = _c.CLIENTs.ToList();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            LoanForm l = new LoanForm();
+            l.ShowDialog();
         }
     }
 }

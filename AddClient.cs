@@ -1,5 +1,5 @@
-﻿using Cabardo.Entities;
-using System;
+﻿using System;
+using Cabardo.Entities;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,19 +11,17 @@ using System.Windows.Forms;
 
 namespace Cabardo
 {
-    public partial class Edit : Form
+    public partial class Add : Form
     {
-        private readonly ambotEntities1 _c = new ambotEntities1();
+        private readonly ambotEntities2 _c = new ambotEntities2();
         private readonly BindingSource _bSource;
-        private int _id;
-        public Edit()
+        public Add()
         {
             InitializeComponent();
         }
-        public Edit(int id, BindingSource bSource) : this()
+        public Add(BindingSource bSource) : this()
         {
             _bSource = bSource;
-            _id = id;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -33,29 +31,22 @@ namespace Cabardo
             }
             else
             {
-                var c = _c.CLIENTs.Where(q => q.Id == _id).FirstOrDefault();
+                CLIENT c = new CLIENT();
                 c.Firstname = textBox1.Text.Trim();
                 c.Lastname = textBox2.Text.Trim();
                 c.Residency = textBox3.Text.Trim();
                 c.Birthday = dateTimePicker1.Value;
 
+                _c.CLIENTs.Add(c);
                 _c.SaveChanges();
 
-                textBox1.Text = " ";
-                textBox2.Text = " ";
-                textBox3.Text = " ";
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
 
                 _bSource.DataSource = _c.CLIENTs.ToList();
                 this.Close();
             }
-        }
-        private void Edit_Load(object sender, EventArgs e)
-        {
-            var client = _c.CLIENTs.Where(q => q.Id == _id).FirstOrDefault();
-            textBox1.Text = client.Firstname;
-            textBox2.Text = client.Lastname;
-            textBox3.Text = client.Residency;
-            dateTimePicker1.Value = client.Birthday;
         }
     }
 }

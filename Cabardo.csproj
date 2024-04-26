@@ -55,49 +55,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Add.cs">
+    <Compile Include="AddClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Add.Designer.cs">
-      <DependentUpon>Add.cs</DependentUpon>
+    <Compile Include="AddClient.Designer.cs">
+      <DependentUpon>AddClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddLoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddLoan.Designer.cs">
+      <DependentUpon>AddLoan.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\CLIENT.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Rendyll.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Model1.Context.cs">
+    <Compile Include="Entities\LOAN.cs">
+      <DependentUpon>Rendyll.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Rendyll.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>Rendyll.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Model1.cs">
+    <Compile Include="Entities\Rendyll.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Rendyll.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Model1.Designer.cs">
+    <Compile Include="Entities\Rendyll.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>Rendyll.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="LoanForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="LoanForm.Designer.cs">
+      <DependentUpon>LoanForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="rendyll.cs">
+    <Compile Include="EditClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="rendyll.Designer.cs">
-      <DependentUpon>rendyll.cs</DependentUpon>
+    <Compile Include="EditClient.Designer.cs">
+      <DependentUpon>EditClient.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Add.resx">
-      <DependentUpon>Add.cs</DependentUpon>
+    <EmbeddedResource Include="AddClient.resx">
+      <DependentUpon>AddClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="AddLoan.resx">
+      <DependentUpon>AddLoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoanForm.resx">
+      <DependentUpon>LoanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -108,19 +129,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="rendyll.resx">
-      <DependentUpon>rendyll.cs</DependentUpon>
+    <EmbeddedResource Include="EditClient.resx">
+      <DependentUpon>EditClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Entities\Model1.edmx">
+    <EntityDeploy Include="Entities\Rendyll.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Rendyll.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Entities\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="Entities\Rendyll.edmx.diagram">
+      <DependentUpon>Rendyll.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Cabardo.Entities.Category.datasource" />
     <None Include="Properties\DataSources\Cabardo.Entities.CLIENT.datasource" />
+    <None Include="Properties\DataSources\Cabardo.Entities.LOAN.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -135,19 +157,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Entities\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entities\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="Entities\Rendyll.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Rendyll.edmx</DependentUpon>
+      <LastGenOutput>Rendyll.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\Rendyll.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Rendyll.edmx</DependentUpon>
+      <LastGenOutput>Rendyll.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
