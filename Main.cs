@@ -60,7 +60,7 @@ namespace Cabardo
 
         private void button5_Click(object sender, EventArgs e)
         {
-            LoanForm l = new LoanForm();
+            LoanForm l = new LoanForm(id);
             l.ShowDialog();
         }
     }
