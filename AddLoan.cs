@@ -14,36 +14,71 @@ namespace Cabardo
     public partial class AddLoan : Form
     {
         private readonly int _id;
+        private readonly BindingSource _bsource;
         private readonly ambotEntities2 _c = new ambotEntities2();
-        public AddLoan(int id)
+        public AddLoan(int id, BindingSource bsource)
         {
             InitializeComponent();
             _id = id;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            LOAN l = new LOAN();
-            l.LoanAmount = float.Parse(textBox1.Text.Trim());
-            l.Interest = float.Parse(textBox2.Text.Trim());
-            l.Term = (string)comboBox1.SelectedValue;
-            l.Number = int.Parse(textBox3.Text.Trim());
-            l.Deduction = float.Parse(textBox4.Text.Trim());
-            l.InterestedAmount = float.Parse(textBox6.Text.Trim());
-            l.ReceivedAmount = float.Parse(textBox5.Text.Trim());
-            l.TotalPayable = float.Parse(textBox7.Text.Trim());
-            l.DueDate = dateTimePicker1.Value;
-            l.Status = "UNPAID";
-            l.Id = _id;
-            
-            _c.LOANs.Add(l);
-            _c.SaveChanges();
-            this.Close();
+            _bsource = bsource;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            var loan = _c.LOANs.FirstOrDefault(q => q.ClientId == _id);
+
+            if (loan == null)
+            {
+                loan = new LOAN();
+                loan.ClientId = _id;
+                _c.LOANs.Add(loan);
+            }
+
+            loan.LoanAmount = int.Parse(textBox1.Text.Trim());
+            loan.Interest = int.Parse(textBox2.Text.Trim());
+            loan.Term = (string)comboBox1.SelectedValue;
+            loan.Number = int.Parse(textBox3.Text.Trim());
+            loan.Deduction = int.Parse(textBox4.Text.Trim());
+            loan.InterestedAmount = int.Parse(textBox5.Text.Trim());
+            loan.ReceivedAmount = int.Parse(textBox5.Text.Trim());
+            loan.TotalPayable = int.Parse(textBox7.Text.Trim());
+            loan.Status = "UNPAID";
+
+            _c.SaveChanges();
+            this.Close();
+        }
+        private void CalculateDueDate()
+        {
+            string selectedTerm = (string)comboBox1.SelectedValue;
+            int termDuration;
+
+            switch (selectedTerm)
+            {
+                case "Daily":
+                    termDuration = int.Parse(textBox3.Text.Trim());
+                    break;
+                case "Weekly":
+                    termDuration = int.Parse(textBox3.Text.Trim()) * 7;
+                    break;
+                case "Monthly":
+                    termDuration = int.Parse(textBox3.Text.Trim()) * 30; // Assuming 30 days per month
+                    break;
+                default:
+                    termDuration = 0;
+                    break;
+            }
+
+            DateTime dueDate = DateTime.Today.AddDays(termDuration);
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            CalculateDueDate(); 
         }
     }
 }

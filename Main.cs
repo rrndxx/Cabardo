@@ -60,6 +60,14 @@ namespace Cabardo
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count == 0)
+                return;
+
+            id = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+
+            LOAN c = new LOAN();
+            c.ClientId = id;
+
             LoanForm l = new LoanForm(id);
             l.ShowDialog();
         }

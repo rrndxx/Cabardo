@@ -26,20 +26,19 @@ namespace Cabardo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddLoan a = new AddLoan(_id);
+            AddLoan a = new AddLoan(_id, lOANBindingSource);
             a.ShowDialog();
         }
 
         private void LoanForm_Load(object sender, EventArgs e)
         {
-            var clientLoans = _c.LOANs.Where(loan => loan.Id == _id).ToList();
+            var clientLoans = _c.LOANs.Where(loan => loan.ClientId == _id).ToList();
             dataGridView1.DataSource = clientLoans;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Main m = new Main();
-            m.ShowDialog();
+            this.Close();
         }
     }
 }
