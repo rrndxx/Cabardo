@@ -66,7 +66,7 @@ namespace Cabardo
                     termDuration = int.Parse(textBox3.Text.Trim()) * 7;
                     break;
                 case "Monthly":
-                    termDuration = int.Parse(textBox3.Text.Trim()) * 30; // Assuming 30 days per month
+                    termDuration = int.Parse(textBox3.Text.Trim()) * 30;
                     break;
                 default:
                     termDuration = 0;
