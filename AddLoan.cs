@@ -79,7 +79,7 @@ namespace Cabardo
                         MessageBox.Show("Invalid term.");
                         return;
                 }
-                DateTime dueDate = DateTime.Today.AddDays(daysInTerm);
+                DateTime dueDate = DateTime.Today.AddDays(daysInTerm + 1);
 
                 dateTimePicker1.Value = dueDate;
             }
