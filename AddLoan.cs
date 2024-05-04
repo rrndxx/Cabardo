@@ -16,9 +16,13 @@ namespace Cabardo
         private readonly int _id;
         private readonly BindingSource _bsource;
         private readonly ambotEntities2 _c = new ambotEntities2();
-        public AddLoan(int id, BindingSource bsource)
+        public AddLoan()
         {
             InitializeComponent();
+        }
+        public AddLoan(int id, BindingSource bsource): this()
+        {
+           
             _id = id;
             _bsource = bsource;
         }
@@ -30,6 +34,13 @@ namespace Cabardo
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            if(string.IsNullOrEmpty(textBox1.Text.Trim()) || string.IsNullOrEmpty(textBox2.Text.Trim()) || string.IsNullOrEmpty(textBox3.Text.Trim()) || string.IsNullOrEmpty(textBox4.Text.Trim())
+                || string.IsNullOrEmpty(textBox5.Text.Trim()) || string.IsNullOrEmpty(textBox6.Text.Trim()) || string.IsNullOrEmpty(textBox7.Text.Trim()) || string.IsNullOrEmpty(comboBox1.Text.Trim())
+                || string.IsNullOrEmpty(dateTimePicker1.Text.Trim()))
+            {
+                MessageBox.Show("Please fill in all fields.");
+            }
+
             LOAN l = new LOAN();
 
             l.LoanAmount = float.Parse(textBox1.Text.Trim());
@@ -54,7 +65,7 @@ namespace Cabardo
             _c.LOANs.Add(l);
             _c.SaveChanges();
 
-            _bsource.DataSource = _c.LOANs.ToList();
+            _bsource.DataSource = _c.LOANs.Where(loan => loan.ClientId == _id).ToList();
             this.Close();
         }
         private void CalculateDueDate()

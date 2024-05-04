@@ -132,6 +132,7 @@ namespace Cabardo
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "Edit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit";
             this.Load += new System.EventHandler(this.Edit_Load);
             this.ResumeLayout(false);

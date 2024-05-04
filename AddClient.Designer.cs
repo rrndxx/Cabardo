@@ -132,6 +132,7 @@ namespace Cabardo
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "Add";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add";
             this.ResumeLayout(false);
             this.PerformLayout();

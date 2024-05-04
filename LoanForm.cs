@@ -33,7 +33,7 @@ namespace Cabardo
         private void LoanForm_Load(object sender, EventArgs e)
         {
             var clientLoans = _c.LOANs.Where(loan => loan.ClientId == _id).ToList();
-            dataGridView1.DataSource = clientLoans;
+            lOANBindingSource.DataSource = clientLoans;
         }
 
         private void button3_Click(object sender, EventArgs e)
