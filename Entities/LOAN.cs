@@ -15,14 +15,14 @@ namespace Cabardo.Entities
     public partial class LOAN
     {
         public int Id { get; set; }
-        public Nullable<int> LoanAmount { get; set; }
-        public Nullable<int> Interest { get; set; }
+        public Nullable<double> LoanAmount { get; set; }
+        public Nullable<double> Interest { get; set; }
         public string Term { get; set; }
         public Nullable<int> Number { get; set; }
-        public Nullable<int> Deduction { get; set; }
-        public Nullable<int> InterestedAmount { get; set; }
-        public Nullable<int> ReceivedAmount { get; set; }
-        public Nullable<int> TotalPayable { get; set; }
+        public Nullable<double> Deduction { get; set; }
+        public Nullable<double> InterestedAmount { get; set; }
+        public Nullable<double> ReceivedAmount { get; set; }
+        public Nullable<double> TotalPayable { get; set; }
         public Nullable<System.DateTime> DueDate { get; set; }
         public string Status { get; set; }
         public Nullable<int> ClientId { get; set; }

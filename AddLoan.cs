@@ -30,55 +30,113 @@ namespace Cabardo
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            var loan = _c.LOANs.FirstOrDefault(q => q.ClientId == _id);
+            LOAN l = new LOAN();
 
-            if (loan == null)
-            {
-                loan = new LOAN();
-                loan.ClientId = _id;
-                _c.LOANs.Add(loan);
-            }
+            l.LoanAmount = float.Parse(textBox1.Text.Trim());
+            l.Interest = float.Parse(textBox2.Text.Trim());
+            l.Term = comboBox1.SelectedItem.ToString();
+            l.Number = int.Parse(textBox3.Text.Trim());
+            l.Deduction = float.Parse(textBox4.Text.Trim());
+            l.InterestedAmount = float.Parse(textBox5.Text.Trim());
+            l.ReceivedAmount = float.Parse(textBox5.Text.Trim());
+            l.Status = "UNPAID";
+            l.ClientId = _id;
 
-            loan.LoanAmount = int.Parse(textBox1.Text.Trim());
-            loan.Interest = int.Parse(textBox2.Text.Trim());
-            loan.Term = (string)comboBox1.SelectedValue;
-            loan.Number = int.Parse(textBox3.Text.Trim());
-            loan.Deduction = int.Parse(textBox4.Text.Trim());
-            loan.InterestedAmount = int.Parse(textBox5.Text.Trim());
-            loan.ReceivedAmount = int.Parse(textBox5.Text.Trim());
-            loan.TotalPayable = int.Parse(textBox7.Text.Trim());
-            loan.Status = "UNPAID";
+            CalculateDueDate();
+            l.DueDate = (DateTime)dateTimePicker1.Value;
 
+            CalculateInterest();
+            l.InterestedAmount = float.Parse(textBox6.Text.Trim());
+
+            CalculatePayable();
+            l.TotalPayable = float.Parse(textBox7.Text.Trim());
+
+            _c.LOANs.Add(l);
             _c.SaveChanges();
+
+            _bsource.DataSource = _c.LOANs.ToList();
             this.Close();
         }
         private void CalculateDueDate()
         {
-            string selectedTerm = (string)comboBox1.SelectedValue;
-            int termDuration;
-
-            switch (selectedTerm)
+            if (int.TryParse(textBox3.Text.Trim(), out int termDuration))
             {
-                case "Daily":
-                    termDuration = int.Parse(textBox3.Text.Trim());
-                    break;
-                case "Weekly":
-                    termDuration = int.Parse(textBox3.Text.Trim()) * 7;
-                    break;
-                case "Monthly":
-                    termDuration = int.Parse(textBox3.Text.Trim()) * 30;
-                    break;
-                default:
-                    termDuration = 0;
-                    break;
-            }
+                string selectedTerm = comboBox1.SelectedItem.ToString();
+                int daysInTerm = 0;
 
-            DateTime dueDate = DateTime.Today.AddDays(termDuration);
+                switch (selectedTerm)
+                {
+                    case "Daily":
+                        daysInTerm = termDuration;
+                        break;
+                    case "Weekly":
+                        daysInTerm = termDuration * 7;
+                        break;
+                    case "Monthly":
+                        daysInTerm = termDuration * 30; // Assuming 30 days per month
+                        break;
+                    default:
+                        MessageBox.Show("Invalid term.");
+                        return;
+                }
+                DateTime dueDate = DateTime.Today.AddDays(daysInTerm);
+
+                dateTimePicker1.Value = dueDate;
+            }
+            else
+            {
+                MessageBox.Show("Invalid term duration.");
+            }
+        }
+        private void CalculateInterest()
+        {
+            if (float.TryParse(textBox1.Text.Trim(), out float lamount) && float.TryParse(textBox2.Text.Trim(), out float interest))
+            {
+                float intamount = lamount * (interest / 100);
+
+                textBox6.Text = intamount.ToString();
+            }
+        }
+        private void CalculatePayable()
+        {
+            if (float.TryParse(textBox1.Text.Trim(), out float loanAmount) && float.TryParse(textBox2.Text.Trim(), out float interest) && int.TryParse(textBox3.Text.Trim(), out int termDuration))
+            {
+                float totalPayable = (loanAmount * (interest / 100) * termDuration) + loanAmount;
+
+                textBox7.Text = totalPayable.ToString();
+            }
+        }
+        private void CalculateReceivable()
+        {
+            if (float.TryParse(textBox1.Text.Trim(), out float loanAmount) && float.TryParse(textBox4.Text.Trim(), out float deduct))
+            {
+                float receivable = loanAmount - deduct;
+
+                textBox5.Text = receivable.ToString();
+            }
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            CalculateDueDate(); 
+            CalculateDueDate();
+            CalculatePayable();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            CalculateInterest();
+            CalculatePayable();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            CalculatePayable();
+            CalculateReceivable();
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            CalculateReceivable();
         }
     }
 }

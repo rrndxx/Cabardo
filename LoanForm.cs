@@ -40,5 +40,11 @@ namespace Cabardo
         {
             this.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var clientLoans = _c.LOANs.Where(loan => loan.ClientId == _id).ToList();
+            dataGridView1.DataSource = clientLoans;
+        }
     }
 }

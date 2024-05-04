@@ -20,14 +20,14 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LoanAmount" Type="int" />
-          <Property Name="Interest" Type="int" />
+          <Property Name="LoanAmount" Type="float" />
+          <Property Name="Interest" Type="float" />
           <Property Name="Term" Type="varchar" MaxLength="50" />
           <Property Name="Number" Type="int" />
-          <Property Name="Deduction" Type="int" />
-          <Property Name="InterestedAmount" Type="int" />
-          <Property Name="ReceivedAmount" Type="int" />
-          <Property Name="TotalPayable" Type="int" />
+          <Property Name="Deduction" Type="float" />
+          <Property Name="InterestedAmount" Type="float" />
+          <Property Name="ReceivedAmount" Type="float" />
+          <Property Name="TotalPayable" Type="float" />
           <Property Name="DueDate" Type="date" />
           <Property Name="Status" Type="varchar" MaxLength="100" />
           <Property Name="ClientId" Type="int" />
@@ -59,14 +59,14 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LoanAmount" Type="Int32" />
-          <Property Name="Interest" Type="Int32" />
+          <Property Name="LoanAmount" Type="Double" />
+          <Property Name="Interest" Type="Double" />
           <Property Name="Term" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Number" Type="Int32" />
-          <Property Name="Deduction" Type="Int32" />
-          <Property Name="InterestedAmount" Type="Int32" />
-          <Property Name="ReceivedAmount" Type="Int32" />
-          <Property Name="TotalPayable" Type="Int32" />
+          <Property Name="Deduction" Type="Double" />
+          <Property Name="InterestedAmount" Type="Double" />
+          <Property Name="ReceivedAmount" Type="Double" />
+          <Property Name="TotalPayable" Type="Double" />
           <Property Name="DueDate" Type="DateTime" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ClientId" Type="Int32" />
