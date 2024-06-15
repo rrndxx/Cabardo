@@ -12,20 +12,15 @@ namespace Cabardo.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class LOAN
+    public partial class PAYMENTSCHEDULE
     {
         public int Id { get; set; }
-        public Nullable<double> LoanAmount { get; set; }
-        public Nullable<double> Interest { get; set; }
-        public string Term { get; set; }
-        public Nullable<int> Number { get; set; }
-        public Nullable<double> Deduction { get; set; }
-        public Nullable<double> InterestedAmount { get; set; }
-        public Nullable<double> ReceivedAmount { get; set; }
-        public Nullable<double> TotalPayable { get; set; }
-        public Nullable<System.DateTime> DueDate { get; set; }
+        public Nullable<double> Payment { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
         public string Status { get; set; }
-        public Nullable<int> ClientId { get; set; }
+        public string Term { get; set; }
+        public Nullable<double> TotalPayable { get; set; }
+        public Nullable<int> Number { get; set; }
         public Nullable<System.DateTime> LoanDate { get; set; }
     }
 }
