@@ -14,6 +14,7 @@ namespace Cabardo
     public partial class AddLoan : Form
     {
         private readonly int _id;
+        int ID;
         private readonly BindingSource _bsource;
         private readonly ambotEntities2 _c = new ambotEntities2();
         public AddLoan()
@@ -22,16 +23,10 @@ namespace Cabardo
         }
         public AddLoan(int id, BindingSource bsource): this()
         {
-           
             _id = id;
             _bsource = bsource;
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        
         private void button1_Click_1(object sender, EventArgs e)
         {
             if(string.IsNullOrEmpty(textBox1.Text.Trim()) || string.IsNullOrEmpty(textBox2.Text.Trim()) || string.IsNullOrEmpty(textBox3.Text.Trim()) || string.IsNullOrEmpty(textBox4.Text.Trim())
@@ -52,6 +47,7 @@ namespace Cabardo
             l.ReceivedAmount = float.Parse(textBox5.Text.Trim());
             l.Status = "UNPAID";
             l.ClientId = _id;
+            l.LoanDate = DateTime.Now;
 
             CalculateDueDate();
             l.DueDate = (DateTime)dateTimePicker1.Value;
@@ -66,6 +62,12 @@ namespace Cabardo
             _c.SaveChanges();
 
             _bsource.DataSource = _c.LOANs.Where(loan => loan.ClientId == _id).ToList();
+            ID = l.Id;
+            PaymentSched();
+            this.Close();
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
         private void CalculateDueDate()
@@ -126,28 +128,69 @@ namespace Cabardo
                 textBox5.Text = receivable.ToString();
             }
         }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void PaymentSched()
         {
-            CalculateDueDate();
-            CalculatePayable();
-        }
+            List<PaymentDetail> paymentDetails = new List<PaymentDetail>();
+            DateTime currentDate = DateTime.Now;
+            int interval = 0;
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            CalculateInterest();
-            CalculatePayable();
-        }
+            switch (comboBox1.SelectedItem)
+            {
+                case "Daily":
+                    interval = 1;
+                    break;
+                case "Weekly":
+                    interval = 7;
+                    break;
+                case "Monthly":
+                    interval = 30;
+                    break;
+                default:
+                    return;
+            }
 
+            float paymentAmount = float.Parse(textBox7.Text.Trim()) / int.Parse(textBox3.Text.Trim());
+
+            for (int i = 0; i < int.Parse(textBox3.Text.Trim()); i++)
+            {
+                currentDate = currentDate.AddDays(interval);
+                PAYMENTSCHEDULE p = new PAYMENTSCHEDULE();
+                p.PaymentID = ID;
+                p.Payment = paymentAmount;
+                p.Date = currentDate;
+                p.Status = "UNPAID";
+                p.Term = comboBox1.SelectedItem.ToString();
+                p.TotalPayable = float.Parse(textBox7.Text.Trim());
+                p.Number = int.Parse(textBox3.Text.Trim());
+                p.LoanDate = DateTime.Now;
+
+                _c.PAYMENTSCHEDULEs.Add(p);
+            }
+            _c.SaveChanges();
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             CalculatePayable();
             CalculateReceivable();
         }
-
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            CalculateInterest();
+            CalculatePayable();
+        }
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            CalculateDueDate();
+            CalculatePayable();
+        }
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
             CalculateReceivable();
         }
+        public class PaymentDetail
+        {
+            public DateTime PaymentDate { get; set; }
+            public float Amount { get; set; }
+        }   
     }
 }

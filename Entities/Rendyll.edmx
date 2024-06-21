@@ -45,11 +45,23 @@
           <Property Name="TotalPayable" Type="float" />
           <Property Name="Number" Type="int" />
           <Property Name="LoanDate" Type="date" />
+          <Property Name="PaymentID" Type="int" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="ambotModelStoreContainer">
           <EntitySet Name="CLIENT" EntityType="Self.CLIENT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOAN" EntityType="Self.LOAN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PAYMENTSCHEDULE" EntityType="Self.PAYMENTSCHEDULE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -67,22 +79,10 @@
         </EntityType>
         <EntityContainer Name="ambotEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CLIENTs" EntityType="Self.CLIENT" />
-          <EntitySet Name="PAYMENTSCHEDULEs" EntityType="ambotModel.PAYMENTSCHEDULE" />
           <EntitySet Name="LOANs" EntityType="ambotModel.LOAN" />
+          <EntitySet Name="PAYMENTSCHEDULEs" EntityType="ambotModel.PAYMENTSCHEDULE" />
+          <EntitySet Name="UserTables" EntityType="ambotModel.UserTable" />
         </EntityContainer>
-        <EntityType Name="PAYMENTSCHEDULE">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Payment" Type="Double" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Term" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TotalPayable" Type="Double" />
-          <Property Name="Number" Type="Int32" />
-          <Property Name="LoanDate" Type="DateTime" Precision="0" />
-        </EntityType>
         <EntityType Name="LOAN">
           <Key>
             <PropertyRef Name="Id" />
@@ -101,6 +101,30 @@
           <Property Name="ClientId" Type="Int32" />
           <Property Name="LoanDate" Type="DateTime" Precision="0" />
         </EntityType>
+        <EntityType Name="PAYMENTSCHEDULE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Payment" Type="Double" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Term" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalPayable" Type="Double" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="LoanDate" Type="DateTime" Precision="0" />
+          <Property Name="PaymentID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -115,20 +139,6 @@
                 <ScalarProperty Name="Lastname" ColumnName="Lastname" />
                 <ScalarProperty Name="Residency" ColumnName="Residency" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PAYMENTSCHEDULEs">
-            <EntityTypeMapping TypeName="ambotModel.PAYMENTSCHEDULE">
-              <MappingFragment StoreEntitySet="PAYMENTSCHEDULE">
-                <ScalarProperty Name="LoanDate" ColumnName="LoanDate" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="TotalPayable" ColumnName="TotalPayable" />
-                <ScalarProperty Name="Term" ColumnName="Term" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Payment" ColumnName="Payment" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -147,6 +157,32 @@
                 <ScalarProperty Name="Term" ColumnName="Term" />
                 <ScalarProperty Name="Interest" ColumnName="Interest" />
                 <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAYMENTSCHEDULEs">
+            <EntityTypeMapping TypeName="ambotModel.PAYMENTSCHEDULE">
+              <MappingFragment StoreEntitySet="PAYMENTSCHEDULE">
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="LoanDate" ColumnName="LoanDate" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="TotalPayable" ColumnName="TotalPayable" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="ambotModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

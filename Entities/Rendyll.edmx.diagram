@@ -6,8 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="838ffce3f64e407ca9a0caada8f13386" Name="Diagram1">
         <EntityTypeShape EntityType="ambotModel.CLIENT" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ambotModel.PAYMENTSCHEDULE" Width="1.5" PointX="5.875" PointY="0.75" />
         <EntityTypeShape EntityType="ambotModel.LOAN" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ambotModel.PAYMENTSCHEDULE" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ambotModel.UserTable" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -44,10 +44,10 @@ namespace Cabardo
             this.interestedAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receivedAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPayableDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loanDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dueDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loanDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOANBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -69,23 +69,23 @@ namespace Cabardo
             this.interestedAmountDataGridViewTextBoxColumn,
             this.receivedAmountDataGridViewTextBoxColumn,
             this.totalPayableDataGridViewTextBoxColumn,
+            this.loanDateDataGridViewTextBoxColumn,
             this.dueDateDataGridViewTextBoxColumn,
             this.statusDataGridViewTextBoxColumn,
-            this.clientIdDataGridViewTextBoxColumn,
-            this.loanDateDataGridViewTextBoxColumn});
+            this.clientIdDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.lOANBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1161, 283);
+            this.dataGridView1.Size = new System.Drawing.Size(1253, 319);
             this.dataGridView1.TabIndex = 0;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button1.Location = new System.Drawing.Point(1017, 301);
+            this.button1.Location = new System.Drawing.Point(1108, 337);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -96,7 +96,7 @@ namespace Cabardo
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.button3.Location = new System.Drawing.Point(1098, 301);
+            this.button3.Location = new System.Drawing.Point(1189, 337);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 5;
@@ -107,7 +107,7 @@ namespace Cabardo
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button2.Location = new System.Drawing.Point(854, 301);
+            this.button2.Location = new System.Drawing.Point(945, 337);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(157, 23);
             this.button2.TabIndex = 6;
@@ -182,6 +182,13 @@ namespace Cabardo
             this.totalPayableDataGridViewTextBoxColumn.Name = "totalPayableDataGridViewTextBoxColumn";
             this.totalPayableDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // loanDateDataGridViewTextBoxColumn
+            // 
+            this.loanDateDataGridViewTextBoxColumn.DataPropertyName = "LoanDate";
+            this.loanDateDataGridViewTextBoxColumn.HeaderText = "Loan Date";
+            this.loanDateDataGridViewTextBoxColumn.Name = "loanDateDataGridViewTextBoxColumn";
+            this.loanDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // dueDateDataGridViewTextBoxColumn
             // 
             this.dueDateDataGridViewTextBoxColumn.DataPropertyName = "DueDate";
@@ -204,20 +211,12 @@ namespace Cabardo
             this.clientIdDataGridViewTextBoxColumn.ReadOnly = true;
             this.clientIdDataGridViewTextBoxColumn.Visible = false;
             // 
-            // loanDateDataGridViewTextBoxColumn
-            // 
-            this.loanDateDataGridViewTextBoxColumn.DataPropertyName = "LoanDate";
-            this.loanDateDataGridViewTextBoxColumn.HeaderText = "LoanDate";
-            this.loanDateDataGridViewTextBoxColumn.Name = "loanDateDataGridViewTextBoxColumn";
-            this.loanDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.loanDateDataGridViewTextBoxColumn.Visible = false;
-            // 
             // LoanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(1185, 336);
+            this.ClientSize = new System.Drawing.Size(1276, 372);
             this.ControlBox = false;
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
@@ -251,9 +250,9 @@ namespace Cabardo
         private System.Windows.Forms.DataGridViewTextBoxColumn interestedAmountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn receivedAmountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalPayableDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn loanDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dueDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn clientIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn loanDateDataGridViewTextBoxColumn;
     }
 }

@@ -12,16 +12,12 @@ namespace Cabardo.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class PAYMENTSCHEDULE
+    public partial class UserTable
     {
         public int Id { get; set; }
-        public Nullable<double> Payment { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public string Status { get; set; }
-        public string Term { get; set; }
-        public Nullable<double> TotalPayable { get; set; }
-        public Nullable<int> Number { get; set; }
-        public Nullable<System.DateTime> LoanDate { get; set; }
-        public Nullable<int> PaymentID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }

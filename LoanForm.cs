@@ -15,6 +15,7 @@ namespace Cabardo
     {
         private readonly ambotEntities2 _c = new ambotEntities2();
         private int _id;
+        private int Id;
         public LoanForm()
         {
             InitializeComponent();
@@ -29,13 +30,16 @@ namespace Cabardo
             AddLoan a = new AddLoan(_id, lOANBindingSource);
             a.ShowDialog();
         }
-
-        private void LoanForm_Load(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            var clientLoans = _c.LOANs.Where(loan => loan.ClientId == _id).ToList();
-            lOANBindingSource.DataSource = clientLoans;
-        }
+            if (dataGridView1.SelectedRows.Count == 0)
+                return;
 
+            Id = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+
+            PaymentSchedule s = new PaymentSchedule(Id);
+            s.ShowDialog();
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -46,13 +50,10 @@ namespace Cabardo
             var clientLoans = _c.LOANs.Where(loan => loan.ClientId == _id).ToList();
             dataGridView1.DataSource = clientLoans;
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void LoanForm_Load(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 0)
-                return;
-
-            _id = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+            var clientLoans = _c.LOANs.Where(loan => loan.ClientId == _id).ToList();
+            lOANBindingSource.DataSource = clientLoans;
         }
     }
 }
