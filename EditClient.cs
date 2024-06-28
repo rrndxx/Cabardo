@@ -25,37 +25,38 @@ namespace Cabardo
             _bSource = bSource;
             _id = id;
         }
-        private void button1_Click(object sender, EventArgs e)
+
+        private void guna2Button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBox1.Text.Trim()) || string.IsNullOrEmpty(textBox2.Text.Trim()) || string.IsNullOrEmpty(textBox3.Text.Trim()))
+            if (string.IsNullOrEmpty(guna2TextBox1.Text.Trim()) || string.IsNullOrEmpty(guna2TextBox2.Text.Trim()) || string.IsNullOrEmpty(guna2TextBox3.Text.Trim()))
             {
                 MessageBox.Show("ERROR");
             }
             else
             {
                 var c = _c.CLIENTs.Where(q => q.Id == _id).FirstOrDefault();
-                c.Firstname = textBox1.Text.Trim();
-                c.Lastname = textBox2.Text.Trim();
-                c.Residency = textBox3.Text.Trim();
-                c.Birthday = dateTimePicker1.Value;
+                c.Firstname = guna2TextBox1.Text.Trim();
+                c.Lastname = guna2TextBox2.Text.Trim();
+                c.Residency = guna2TextBox3.Text.Trim();
+                c.Birthday = gunaDateTimePicker1.Value;
 
                 _c.SaveChanges();
 
-                textBox1.Text = " ";
-                textBox2.Text = " ";
-                textBox3.Text = " ";
+                guna2TextBox1.Text = " ";
+                guna2TextBox2.Text = " ";
+                guna2TextBox3.Text = " ";
 
                 _bSource.DataSource = _c.CLIENTs.ToList();
                 this.Close();
             }
-        }
-        private void Edit_Load(object sender, EventArgs e)
+    }
+    private void Edit_Load(object sender, EventArgs e)
         {
             var client = _c.CLIENTs.Where(q => q.Id == _id).FirstOrDefault();
-            textBox1.Text = client.Firstname;
-            textBox2.Text = client.Lastname;
-            textBox3.Text = client.Residency;
-            dateTimePicker1.Value = client.Birthday;
+            guna2TextBox1.Text = client.Firstname;
+            guna2TextBox2.Text = client.Lastname;
+            guna2TextBox3.Text = client.Residency;
+            gunaDateTimePicker1.Value = client.Birthday;
         }
     }
 }

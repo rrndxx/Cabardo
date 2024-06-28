@@ -30,30 +30,32 @@ namespace Cabardo
             AddLoan a = new AddLoan(_id, lOANBindingSource);
             a.ShowDialog();
         }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count == 0)
-                return;
-
-            Id = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
-
-            PaymentSchedule s = new PaymentSchedule(Id);
-            s.ShowDialog();
-        }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            var clientLoans = _c.LOANs.Where(loan => loan.ClientId == _id).ToList();
-            dataGridView1.DataSource = clientLoans;
-        }
         private void LoanForm_Load(object sender, EventArgs e)
         {
             var clientLoans = _c.LOANs.Where(loan => loan.ClientId == _id).ToList();
             lOANBindingSource.DataSource = clientLoans;
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            if (gunaDataGridView1.SelectedRows.Count == 0)
+                return;
+
+            Id = (int)gunaDataGridView1.SelectedRows[0].Cells[0].Value;
+
+            PaymentSchedule s = new PaymentSchedule(Id);
+            s.ShowDialog();
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            AddLoan a = new AddLoan(_id, lOANBindingSource);
+            a.ShowDialog();
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
