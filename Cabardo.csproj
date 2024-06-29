@@ -99,6 +99,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Rendyll.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\USER.cs">
+      <DependentUpon>Rendyll.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\UserTable.cs">
       <DependentUpon>Rendyll.tt</DependentUpon>
     </Compile>
@@ -107,6 +110,12 @@
     </Compile>
     <Compile Include="LoanForm.Designer.cs">
       <DependentUpon>LoanForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -126,6 +135,12 @@
     <Compile Include="MainDashboard.Designer.cs">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="PaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentForm.Designer.cs">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PaymentSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +155,12 @@
     <Compile Include="EditClient.Designer.cs">
       <DependentUpon>EditClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="SignupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignupForm.Designer.cs">
+      <DependentUpon>SignupForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +170,9 @@
     <EmbeddedResource Include="LoanForm.resx">
       <DependentUpon>LoanForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentForm.resx">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PaymentSchedule.resx">
       <DependentUpon>PaymentSchedule.cs</DependentUpon>
@@ -172,6 +199,9 @@
     </Compile>
     <EmbeddedResource Include="EditClient.resx">
       <DependentUpon>EditClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignupForm.resx">
+      <DependentUpon>SignupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Entities\Rendyll.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

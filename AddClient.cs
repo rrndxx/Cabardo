@@ -23,10 +23,6 @@ namespace Cabardo
         {
             _bSource = bSource;
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
@@ -53,5 +49,6 @@ namespace Cabardo
                 this.Close();
             }
         }
+
     }
 }

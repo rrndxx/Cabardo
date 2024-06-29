@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="ambotModel.LOAN" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="ambotModel.PAYMENTSCHEDULE" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="ambotModel.UserTable" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ambotModel.USER" Width="1.5" PointX="7.875" PointY="1.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

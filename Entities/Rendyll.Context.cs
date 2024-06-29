@@ -28,6 +28,6 @@ namespace Cabardo.Entities
         public virtual DbSet<CLIENT> CLIENTs { get; set; }
         public virtual DbSet<LOAN> LOANs { get; set; }
         public virtual DbSet<PAYMENTSCHEDULE> PAYMENTSCHEDULEs { get; set; }
-        public virtual DbSet<UserTable> UserTables { get; set; }
+        public virtual DbSet<USER> USERS { get; set; }
     }
 }

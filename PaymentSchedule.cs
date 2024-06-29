@@ -27,5 +27,16 @@ namespace Cabardo
         {
             pAYMENTSCHEDULEBindingSource.DataSource = _c.PAYMENTSCHEDULEs.Where(PAYMENTSCHEDULE => PAYMENTSCHEDULE.PaymentID == _id).ToList();
         }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            if (gunaDataGridView1.SelectedRows.Count == 0)
+                return;
+
+            _id = (int)gunaDataGridView1.SelectedRows[0].Cells[0].Value;
+
+            PaymentForm p = new PaymentForm(_id, pAYMENTSCHEDULEBindingSource);
+            p.ShowDialog();
+        }
     }
 }
