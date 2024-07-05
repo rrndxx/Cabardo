@@ -29,7 +29,6 @@ namespace Cabardo
             var user = _c.USERS.FirstOrDefault(u => u.Username == username && u.Password == password);
             if (user != null)
             {
-                MessageBox.Show("Login successful");
                 MainDashboard m = new MainDashboard();
                 m.ShowDialog();
             }

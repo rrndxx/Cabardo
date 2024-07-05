@@ -15,6 +15,7 @@ namespace Cabardo
     {
         private readonly ambotEntities2 _c = new ambotEntities2();
         private int _id;
+        private double _payment;
         public PaymentSchedule(int ID): this()
         {
             _id = ID;
@@ -28,14 +29,15 @@ namespace Cabardo
             pAYMENTSCHEDULEBindingSource.DataSource = _c.PAYMENTSCHEDULEs.Where(PAYMENTSCHEDULE => PAYMENTSCHEDULE.PaymentID == _id).ToList();
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void guna2Button3_Click(object sender, EventArgs e)
         {
             if (gunaDataGridView1.SelectedRows.Count == 0)
                 return;
 
             _id = (int)gunaDataGridView1.SelectedRows[0].Cells[0].Value;
+            _payment = Convert.ToDouble(gunaDataGridView1.SelectedRows[0].Cells[1].Value);
 
-            PaymentForm p = new PaymentForm(_id, pAYMENTSCHEDULEBindingSource);
+            PaymentForm p = new PaymentForm(_id, pAYMENTSCHEDULEBindingSource, _payment);
             p.ShowDialog();
         }
     }

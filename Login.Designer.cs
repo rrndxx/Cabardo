@@ -93,7 +93,7 @@ namespace Cabardo
             this.guna2Button5.Font = new System.Drawing.Font("BankGothic Md BT", 8F, System.Drawing.FontStyle.Bold);
             this.guna2Button5.ForeColor = System.Drawing.Color.White;
             this.guna2Button5.HoverState.Parent = this.guna2Button5;
-            this.guna2Button5.Location = new System.Drawing.Point(27, 284);
+            this.guna2Button5.Location = new System.Drawing.Point(27, 297);
             this.guna2Button5.Name = "guna2Button5";
             this.guna2Button5.ShadowDecoration.Parent = this.guna2Button5;
             this.guna2Button5.Size = new System.Drawing.Size(212, 20);
@@ -114,7 +114,7 @@ namespace Cabardo
             this.guna2Button2.Font = new System.Drawing.Font("BankGothic Md BT", 8F, System.Drawing.FontStyle.Bold);
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.HoverState.Parent = this.guna2Button2;
-            this.guna2Button2.Location = new System.Drawing.Point(27, 238);
+            this.guna2Button2.Location = new System.Drawing.Point(27, 259);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
             this.guna2Button2.Size = new System.Drawing.Size(212, 20);

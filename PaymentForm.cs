@@ -1,6 +1,12 @@
 ﻿using Cabardo.Entities;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Cabardo
@@ -10,61 +16,42 @@ namespace Cabardo
         private readonly ambotEntities2 _c = new ambotEntities2();
         private readonly BindingSource _bSource;
         private int _id;
-        private PAYMENTSCHEDULE _paymentSchedule;
-
+        private double _payment;
+        private double newp;
         public PaymentForm()
         {
             InitializeComponent();
         }
-
-        public PaymentForm(int ID, BindingSource bsource) : this()
+        public PaymentForm(int id, BindingSource bsource, double payment): this()
         {
-            _id = ID;
+            _id = id;
             _bSource = bsource;
+            _payment = payment;
         }
 
-        private void PaymentForm_Load(object sender, EventArgs e)
+        private void guna2Button2_Click(object sender, EventArgs e)
         {
-            _paymentSchedule = _c.PAYMENTSCHEDULEs.FirstOrDefault(p => p.Id == _id);
-            if (_paymentSchedule == null)
-            {
-                MessageBox.Show("Payment schedule not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-                return;
-            }
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            if (_paymentSchedule == null)
-            {
-                MessageBox.Show("Payment schedule not loaded properly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             if (string.IsNullOrEmpty(guna2TextBox1.Text.Trim()) || !double.TryParse(guna2TextBox1.Text.Trim(), out double amountPaid))
             {
                 MessageBox.Show("Please enter a valid amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            double newPaymentAmount = (double)(_paymentSchedule.Payment - amountPaid);
-
-            if (newPaymentAmount <= 0)
+            newp = _payment - amountPaid;
+            var p = _c.PAYMENTSCHEDULEs.Where(q => q.Id == _id).FirstOrDefault();
+            p.Payment = newp;
+            if(newp <= 0)
             {
-                _paymentSchedule.Payment = 0;
-                _paymentSchedule.Status = "PAID";
-            }
-            else
-            {
-                _paymentSchedule.Payment = newPaymentAmount;
+                p.Status = "PAID";
             }
 
             _c.SaveChanges();
-
-            MessageBox.Show("Payment successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            _bSource.DataSource = _c.PAYMENTSCHEDULEs.ToList();
             this.Close();
+        }
+        
+        private void PaymentForm_Load(object sender, EventArgs e)
+        {
+            gunaLabel2.Text = _payment.ToString();
         }
     }
 }
